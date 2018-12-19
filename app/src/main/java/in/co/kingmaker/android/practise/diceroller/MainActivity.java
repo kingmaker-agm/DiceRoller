@@ -12,6 +12,8 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView dice1, dice2;
     private Button btn;
+
+    protected int die1 = 1, die2 = 1;
     protected Random randomGenerator = new Random();
 
     @Override
@@ -32,9 +34,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("dice 1 - value", die1);
+        outState.putInt("dice 2 - value", die2);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        die1 = savedInstanceState.getInt("dice 1 - value");
+        die2 = savedInstanceState.getInt("dice 2 - value");
+        dice1.setImageDrawable(getDrawable(getDrawableResId(1, die1)));
+        dice2.setImageDrawable(getDrawable(getDrawableResId(2, die2)));
+    }
+
     protected void rollDices() {
-        int die1 = randomGenerator.nextInt(6) + 1;
-        int die2 = randomGenerator.nextInt(6) + 1;
+        die1 = randomGenerator.nextInt(6) + 1;
+        die2 = randomGenerator.nextInt(6) + 1;
 
         dice1.setImageDrawable(getDrawable(getDrawableResId(1, die1)));
         dice2.setImageDrawable(getDrawable(getDrawableResId(2, die2)));
