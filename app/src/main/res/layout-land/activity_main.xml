@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/rollButton"
-        style="@android:style/Widget.Material.Button.Colored"
+        style="@style/ButtonPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -43,8 +43,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Roll the Dice"
-        android:textSize="24sp"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
